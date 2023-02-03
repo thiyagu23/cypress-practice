@@ -1,4 +1,5 @@
- import 'cypress-iframe'
+import "cypress-iframe"
+
 
 describe("Handling frames", () => {
   it("approach1", () => {
@@ -9,7 +10,7 @@ describe("Handling frames", () => {
     .should('be.visible')
     .then(cy.wrap);
 
-    iframe.clear().type("welcome {cmd+a}");
+    iframe.clear().type("welcome {ctrl+a}");
 
     cy.get("[aria-label='Bold']").click();
 
@@ -19,19 +20,19 @@ describe("Handling frames", () => {
 
     cy.visit("https://the-internet.herokuapp.com/iframe")
   
-    cy.getIframe('#mce_0_ifr').clear().type("welcome {cmd+a}");
+    cy.getIframes('#mce_0_ifr').clear().type("welcome {ctrl+a}");
 
     cy.get("[aria-label='Bold']").click();
 
   });
 
-  it.only("approach3 - by using cypress plugin", () => {
+  it("approach3 - by using cypress plugin", () => {
 
     cy.visit("https://the-internet.herokuapp.com/iframe")
   
     cy.frameLoaded('#mce_0_ifr');  // load the frame
    
-    cy.iframe('#mce_0_ifr').clear().type("welcome {cmd+a}");
+    cy.iframe('#mce_0_ifr').clear().type("welcome {ctrl+a}");
 
     cy.get("[aria-label='Bold']").click();
 
